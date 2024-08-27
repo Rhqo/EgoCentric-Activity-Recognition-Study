@@ -1,0 +1,1 @@
+# EgoCentric-Activity-Recognition-Study
