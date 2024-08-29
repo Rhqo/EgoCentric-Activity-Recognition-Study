@@ -1,5 +1,7 @@
 # EgoCentric Activity Recognition Study
 
+### [Survey Git](https://github.com/EgocentricVision/EgocentricVision?tab=readme-ov-file#devices)
+
 ## EGO4D (Challenge)
 
 https://ego4d-data.org/
@@ -14,7 +16,7 @@ https://ego4d-data.org/
 
 [https://github.com/OpenGVLab/UniFormerV2](https://github.com/OpenGVLab/UniFormerV2)
 
-![UniFormer](./assets/0.png)
+![Screenshot from 2024-08-27 11-03-47.png](./Images/0.png)
 
 $$
 X = DPE(X_{in}) + X_{in},\\
@@ -53,21 +55,11 @@ RA는 token context encoding과 token affinity learning으로 구성된다.
 > $A_n \in R^{L \times L}$ 는 token affinity
 > 
 
-⇒ Online video에 사용한다면, local MHRA만 사용가능한 것이 아닌가?
+# 1. Video Language Pretraining (EgoT2, LaViLa)
 
-# 1. EgoCentric Video Recongition (EgoT2, LaViLa)
+## 1.1 [LaViLa](https://github.com/facebookresearch/LaViLa) (22.12)
 
-[https://github.com/facebookresearch/LaViLa](https://github.com/facebookresearch/LaViLa)
-
-[https://github.com/facebookresearch/EgoT2](https://github.com/facebookresearch/EgoT2)
-
-[https://github.com/showlab/EgoVLP](https://github.com/showlab/EgoVLP)
-
-[https://github.com/facebookresearch/EgoVLPv2](https://github.com/facebookresearch/EgoVLPv2)
-
-## 1.1 LaViLa
-
-![LaViLa](./assets/1.png)
+![Screenshot from 2024-08-27 14-31-27.png](./Images/1.png)
 
 Rephraser encoder-decoer : T5-large
 
@@ -115,13 +107,85 @@ Rephraser를 통해 모델이 다양한 텍스트 표현에 노출되면, 모델
 
 Annotation 결과는 (X, Y’’)으로 표현할 수 있다.
 
-## 1.2 EgoVLP
+### Downstream tasks
 
-![EgoVLP](./assets/2.png)
+Epic-Kitchens-100
 
-## 1.3 EgoVLP v2
+- Multi-Instance Retrieval (EK-100 MIR)
+- Action Recognition (EK-100 CLS)
 
-![EgoVLPv2](./assets/3.png)
+Ego4D
+
+- Multiple Choice Questions (EgoMCQ)
+    
+    ```bash
+    질문: "사용자가 찾고 있는 것은 무엇인가?"
+    a) 과일
+    b) 냄비
+    c) 칼
+    d) 접시
+    답: "c"
+    ```
+    
+- Natural Language Query (EgoNLQ)
+    
+    ```bash
+    질문: "사용자가 가장 마지막으로 구입한 물건은 무엇인가?"
+    답: "사용자가 가장 마지막에 선택한 물건은 '사과'이다"
+    ```
+    
+
+EGTEA
+
+- Action Recognition
+
+CharadesEgo
+
+- Action Recognition
+
+### Demo (CharadesEgo)
+
+0CCES (third-person)
+
+```bash
+0: #O woman A picks a container from the shelf
+1: #C C looks around
+2: #C C looks around
+3: #O woman X Picks a bottle from the shel
+4: #O lady B puts bottle on fridge 
+5: #O a lady X takes the bottle 
+6: #C C looks around
+7: #O woman Y picks a cup
+8: #O lady X takes a cup from the fridge
+9: #O woman A picks a container from the shelf
+```
+
+0CCESEGO (egocentric)
+
+```bash
+0: #C C presses a phone with her right hand.
+1: #C C looks around
+2: #C C holds the phone with her right hand.
+3: #C C presses the phone with both hands.
+4: #C C presses the phone
+5: #C C looks around 
+6: #C C switches on the phone
+7: #C C operates the phone with her right hand.
+8: #C C presses a button on the phone in her right hand with her left hand
+9: #C C looks at the phone 
+```
+
+## 1.2 [EgoT2](https://github.com/facebookresearch/EgoT2) (22.12)
+
+![Screenshot from 2024-08-28 16-42-08.png](./Images/2.png)
+
+## 1.3 [EgoVLP](https://github.com/showlab/EgoVLP) (22.06)
+
+![image.png](./Images/3.png)
+
+## 1.4 [EgoVLPv2](https://github.com/facebookresearch/EgoVLPv2) (23.07)
+
+![Screenshot from 2024-08-27 18-59-50.png](./Images/4.png)
 
 기존의 egocentric VLP 프레임워크는 video encoder와 text encoder(dual encoder)를 별도로 사용하고, task-specific cross-modal information를 학습하는 과정이 fine tuning 단계에서만 이루어져, 통합된 시스템의 발전에 한계가 있었다.
 
@@ -129,8 +193,47 @@ Annotation 결과는 (X, Y’’)으로 표현할 수 있다.
 
 이로 인해 fine tuning 비용이 줄어들고, backbone strategy에서 제안된 fusion 방식은 추가적인 fusion-specific layer를 쌓는 것보다 경량화되어 계산 효율이 높다.
 
+### Downstream tasks
+
+Ego4D
+
+- Multiple Choice Questions (EgoMCQ)
+- Natural Language Query (EgoNLQ)
+- Moment Query (EgoMQ)
+
+QFVS (Query-focused video summarization)
+
+- QFVS
+
+EgoTaskQA
+
+- Video Question Answering
+
+CharadesEgo
+
+- Action Recognition
+
+Epic-Kitchen-100
+
+- Multi-instance retrieval (EK-100 MIR)
+
+### InternVideo-Ego4D
+
+# 2. Video Action Recognintion
+
+### **Action Recognition**
+
+
 # 2. Online Inference
 
 ### Using Webcam …
 
-## 3. Common components, Differences
+# 3. Common components, Differences
+
+## Encoder 차이
+
+### 1. Dual Encoders
+
+### 2. Shared Encoders
+
+### 3. Encoders with Stacked Fusion Layers
