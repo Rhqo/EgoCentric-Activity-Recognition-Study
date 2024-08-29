@@ -1,4 +1,4 @@
-# EgoCentric Activity Recognition Study
+# EgoCentric Vision Study
 
 ### [Survey Git](https://github.com/EgocentricVision/EgocentricVision?tab=readme-ov-file#devices)
 
