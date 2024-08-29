@@ -16,7 +16,7 @@ https://ego4d-data.org/
 
 [https://github.com/OpenGVLab/UniFormerV2](https://github.com/OpenGVLab/UniFormerV2)
 
-![Screenshot from 2024-08-27 11-03-47.png](./Images/0.png)
+![Screenshot from 2024-08-27 11-03-47.png](./assets/0.png)
 
 $$
 X = DPE(X_{in}) + X_{in},\\
@@ -59,7 +59,7 @@ RA는 token context encoding과 token affinity learning으로 구성된다.
 
 ## 1.1 [LaViLa](https://github.com/facebookresearch/LaViLa) (22.12)
 
-![Screenshot from 2024-08-27 14-31-27.png](./Images/1.png)
+![Screenshot from 2024-08-27 14-31-27.png](./assets/1.png)
 
 Rephraser encoder-decoer : T5-large
 
@@ -177,15 +177,15 @@ CharadesEgo
 
 ## 1.2 [EgoT2](https://github.com/facebookresearch/EgoT2) (22.12)
 
-![Screenshot from 2024-08-28 16-42-08.png](./Images/2.png)
+![Screenshot from 2024-08-28 16-42-08.png](./assets/2.png)
 
 ## 1.3 [EgoVLP](https://github.com/showlab/EgoVLP) (22.06)
 
-![image.png](./Images/3.png)
+![image.png](./assets/3.png)
 
 ## 1.4 [EgoVLPv2](https://github.com/facebookresearch/EgoVLPv2) (23.07)
 
-![Screenshot from 2024-08-27 18-59-50.png](./Images/4.png)
+![Screenshot from 2024-08-27 18-59-50.png](./assets/4.png)
 
 기존의 egocentric VLP 프레임워크는 video encoder와 text encoder(dual encoder)를 별도로 사용하고, task-specific cross-modal information를 학습하는 과정이 fine tuning 단계에서만 이루어져, 통합된 시스템의 발전에 한계가 있었다.
 
