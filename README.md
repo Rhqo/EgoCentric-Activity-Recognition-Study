@@ -145,6 +145,10 @@ CharadesEgo
 
 ### Demo (CharadesEgo)
 
+[0CCES.mp4](assets/0CCES.mp4)
+
+[0CCESEGO.mp4](assets/0CCESEGO.mp4)
+
 0CCES (third-person)
 
 ```bash
